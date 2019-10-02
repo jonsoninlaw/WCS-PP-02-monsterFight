@@ -1,15 +1,18 @@
 import java.util.Random;
 
-class Monster {
+abstract class Monster {
 
     private String name;
     private int maxDamage;
-    private int life;
+    private int life = 30;
+    private String type = "normal";
+    private String[] normalAttacks = {"Coup d'boule", "Gifle"};
+    private String[] specialAttacks = {"", ""};
 
-    public Monster(String monsterName, int maxDamage, int monsterLife) {
+
+    public Monster(String monsterName, int maxDamage) {
         this.name = monsterName;
         this.maxDamage = maxDamage;
-        this.life = monsterLife;
     }
 
     public String getName() {
@@ -37,10 +40,31 @@ class Monster {
         this.life = monsterLife;
     }
 
-    public void takeHit(int enemyDamage) {
-        this.life -= enemyDamage;
-
+    public String getType() {
+        return this.type;
     }
+
+    public void setType(String monsterType) {
+        this.type = monsterType;
+    }
+
+    public String[] getNormalAttacks() {
+        return this.normalAttacks;
+    }
+
+    public void setNormalAttacks(String[] normalAttacks) {
+        this.normalAttacks = normalAttacks;
+    }
+
+    public String[] getSpecialAttacks() {
+        return this.specialAttacks;
+    }
+
+    public void setSpecialAttacks(String[] specialAttacks) {
+        this.specialAttacks = specialAttacks;
+    }
+
+    public abstract void takeHit(Monster attackingMonster);
 
 }
 
