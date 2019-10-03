@@ -45,10 +45,12 @@ class FireMonster extends Monster {
         this.setLife(this.getLife() -damage);
 
         if(damage>0) {
-            System.out.println("\n    " + attackingMonster.getName() + " lance " + attackingMonster.getAttacks()[attack] + ". " + this.getName() + " perd " + damage + " points de vie !");
+            System.out.println("   ---------------------------------------------------------");
+            System.out.println("   | " + attackingMonster.getName() + " lance " + attackingMonster.getAttacks()[attack] + ". " + this.getName() + " perd " + damage + " PV !");
         }
         else {
-            System.out.printf("\n    %s lance %s. Il rate son attaque !\n", attackingMonster.getName(), attackingMonster.getAttacks()[attack]);
+            System.out.println("   ---------------------------------------------------------");
+            System.out.printf("   | %s lance %s. Il rate son attaque !\n", attackingMonster.getName(), attackingMonster.getAttacks()[attack]);
         }
 
         return damage;

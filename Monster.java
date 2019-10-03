@@ -58,9 +58,3 @@ abstract class Monster {
     public abstract int takeHit(Monster attackingMonster, int attack);
 
 }
-
-
-
-// De plus, la méthode doit afficher "{name} has {life} points remaining." si le nombre de point de vie est supérieur à zéro, ou "{name} is KO!" sinon.
-
-

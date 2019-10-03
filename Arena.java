@@ -75,11 +75,14 @@ class Arena {
             Random random = new Random();
             int first = random.nextInt(2);
             int damage = 0;
+            int turn = 1;
 
             if (first == 0) {
 
-                System.out.printf("\n\n  %s attaque en premier.", player.getName());
+                System.out.println("\n ********************** TOUR N°" + turn + " **********************");
+                System.out.printf("\n    %s attaque en premier.\n\n", player.getName());
                 int attack = attack(player, enemy);
+                System.out.println();
                 damage = enemy.takeHit(player, attack);
                 checkLife(enemy, damage);
                 if (enemy.getLife() <= 0) {
@@ -88,9 +91,12 @@ class Arena {
                 attack = random.nextInt(4);
                 damage = player.takeHit(enemy, attack);
                 checkLife(player, damage);
+                turn++;
             }
             else {
-                System.out.printf("\n\n  %s attaque en premier.", enemy.getName());
+
+                System.out.println("\n ************************** TOUR N°" + turn + " **************************");
+                System.out.printf("\n    %s attaque en premier.\n\n", enemy.getName());
                 int attack = random.nextInt(4);
                 damage = player.takeHit(enemy, attack);
                 checkLife(player, damage);
@@ -98,8 +104,10 @@ class Arena {
                     break;
                 }
                 attack = attack(player, enemy);
+                System.out.println();
                 damage = enemy.takeHit(player, attack);
                 checkLife(enemy, damage);
+                turn++;
             }  
         }
         
@@ -112,24 +120,26 @@ class Arena {
     public static void checkLife(Monster monster, int damage) {
         
         if (monster.getLife() <= 0) {
-            System.out.println("      " + monster.getName() + " est KO !");
+            System.out.println("   | " + monster.getName() + " est KO !");
+            System.out.println("   ---------------------------------------------------------\n");
         }
         else {
             if (damage > 0) {
-                System.out.println("      " + monster.getName() + " prend cher !\n");
+                System.out.println("   | " + monster.getName() + " prend cher !");
+                System.out.println("   ---------------------------------------------------------\n");
             }
             else {
-                System.out.printf("      %s éclate de rire !\n", monster.getName());
+                System.out.printf("   | %s éclate de rire !\n", monster.getName());
+                System.out.println("   ---------------------------------------------------------\n");
             }
         }
     }
 
     public static int attack(Monster player, Monster enemy) {
-        System.out.println(" C'est à votre tour.");
         System.out.printf("    %s : %s PV\n", player.getName(), player.getLife());
         System.out.printf("    %s : %s PV\n", enemy.getName(), enemy.getLife());
-        System.out.print("\nVoici les attaques de " + player.getName() + " :");
-        System.out.println("\n  1 : " + player.getAttacks()[0] + "     3 : " + player.getAttacks()[2] + "\n  2 : " + player.getAttacks()[1] + "            4 : " + player.getAttacks()[3]);
+        System.out.print("\n    Voici les attaques de " + player.getName() + " :");
+        System.out.println("\n      1 : " + player.getAttacks()[0] + "     3 : " + player.getAttacks()[2] + "\n      2 : " + player.getAttacks()[1] + "            4 : " + player.getAttacks()[3]);
         System.out.print("\nQuelle attaque doit-il lancer ? : ");
         String answer = "";
         int attack = -1;
