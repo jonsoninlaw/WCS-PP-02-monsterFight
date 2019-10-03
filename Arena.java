@@ -69,13 +69,14 @@ class Arena {
     }
     
     static void fight(Monster player, Monster enemy) {
+
+        int turn = 1;
         
         while (player.getLife() > 0 && enemy.getLife() > 0) {
             
             Random random = new Random();
             int first = random.nextInt(2);
             int damage = 0;
-            int turn = 1;
 
             if (first == 0) {
 
@@ -96,7 +97,7 @@ class Arena {
             else {
 
                 System.out.println("\n ************************** TOUR N°" + turn + " **************************");
-                System.out.printf("\n    %s attaque en premier.\n\n", enemy.getName());
+                System.out.printf("\n    Le %s ennemi attaque en premier.\n\n", enemy.getName());
                 int attack = random.nextInt(4);
                 damage = player.takeHit(enemy, attack);
                 checkLife(player, damage);
