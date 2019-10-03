@@ -4,10 +4,9 @@ abstract class Monster {
 
     private String name;
     private int maxDamage;
-    private int life = 30;
+    private int life = 100;
     private String type = "normal";
-    private String[] normalAttacks = {"Coup d'boule", "Gifle"};
-    private String[] specialAttacks = {"", ""};
+    private String[] attacks = {"Coup d'boule", "Gifle", "", ""};
 
 
     public Monster(String monsterName, int maxDamage) {
@@ -24,8 +23,7 @@ abstract class Monster {
     }
 
     public int getDamage() {
-        Random damage = new Random();
-        return damage.nextInt(maxDamage);
+        return this.maxDamage;
     }
 
     public void setDamage(int monsterDamage) {
@@ -48,23 +46,16 @@ abstract class Monster {
         this.type = monsterType;
     }
 
-    public String[] getNormalAttacks() {
-        return this.normalAttacks;
+    public String[] getAttacks() {
+        return this.attacks;
     }
 
-    public void setNormalAttacks(String[] normalAttacks) {
-        this.normalAttacks = normalAttacks;
+    public void setAttacks(int index, String attack) {
+        this.attacks[index] = attack;
     }
 
-    public String[] getSpecialAttacks() {
-        return this.specialAttacks;
-    }
 
-    public void setSpecialAttacks(String[] specialAttacks) {
-        this.specialAttacks = specialAttacks;
-    }
-
-    public abstract void takeHit(Monster attackingMonster);
+    public abstract int takeHit(Monster attackingMonster, int attack);
 
 }
 
